@@ -2,20 +2,3 @@
     display: flex;
     justify-content: center;
 }
-
-.slider-control-centerleft {
-    margin-left: -45px;
-}
-
-.slider-control-centerright {
-    margin-right: -45px;
-}
-
-.arrow {
-    cursor: pointer;
-}
-
-.arrow:hover {
-    transform: scale(1.3);
-    transition-duration: 0.3s;
-}

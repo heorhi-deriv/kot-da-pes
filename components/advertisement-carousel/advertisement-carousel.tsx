@@ -1,10 +1,11 @@
 'use client';
-
+import { useCallback } from 'react';
 import Image from 'next/image';
 import Carousel from 'nuka-carousel';
-import Coins from '@/public/assets/kot-da-pes-coins.png';
-import { useWindowSize } from '@/hooks/useWindowSize';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
+import Coins from '@/public/assets/kot-da-pes-coins.png';
+import { useMediaQuery } from 'usehooks-ts';
+import { BREAKPOINTS } from '@/constants/constants';
 import './advertisement-carousel.css';
 
 const defaultControlsConfig: React.ComponentProps<typeof Carousel>['defaultControlsConfig'] = {
@@ -18,20 +19,33 @@ type TScrollButtonProps = {
 
 const ScrollButton = ({ direction, nextSlideHandler }: TScrollButtonProps) => {
     return direction === 'left' ? (
-        <ChevronLeft size={60} strokeWidth={2} color='#64748b' onClick={nextSlideHandler} className='arrow' />
+        <ChevronLeft
+            size={60}
+            strokeWidth={2}
+            color='#64748b'
+            onClick={nextSlideHandler}
+            className='ml-[-45px] transform cursor-pointer duration-300 hover:scale-125'
+        />
     ) : (
-        <ChevronRight size={60} strokeWidth={2} color='#64748b' onClick={nextSlideHandler} className='arrow' />
+        <ChevronRight
+            size={60}
+            strokeWidth={2}
+            color='#64748b'
+            onClick={nextSlideHandler}
+            className='mr-[-45px] transform cursor-pointer duration-300 hover:scale-125'
+        />
     );
 };
 
 const AdvertisementCarousel = () => {
-    const { isSmallScreen, isMediumScreen } = useWindowSize();
+    const is_small_screen = useMediaQuery(`(max-width: ${BREAKPOINTS.SMALL}px)`);
+    const is_medium_screen = useMediaQuery(`(max-width: ${BREAKPOINTS.MEDIUM}px)`);
 
-    const getNumberofSlides = () => {
-        if (isSmallScreen) return 3;
-        if (isMediumScreen) return 4;
+    const getNumberOfSlides = useCallback(() => {
+        if (is_small_screen) return 3;
+        if (is_medium_screen) return 4;
         return 6;
-    };
+    }, [is_medium_screen, is_small_screen]);
 
     return (
         <section className='mx-auto max-w-screen-lg bg-background px-2 py-6 sm:px-10'>
@@ -45,9 +59,9 @@ const AdvertisementCarousel = () => {
                 renderCenterLeftControls={({ previousSlide }) => (
                     <ScrollButton direction='left' nextSlideHandler={previousSlide} />
                 )}
-                slidesToShow={getNumberofSlides()}
+                slidesToShow={getNumberOfSlides()}
                 cellSpacing={10}
-                withoutControls={isSmallScreen}
+                withoutControls={is_small_screen}
                 wrapAround
             >
                 <Image src={Coins} alt='coins' width={160} height={200} />
