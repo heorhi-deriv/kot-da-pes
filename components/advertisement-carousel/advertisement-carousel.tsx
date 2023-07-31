@@ -1,11 +1,11 @@
 'use client';
+
 import { useCallback } from 'react';
 import Image from 'next/image';
 import Carousel from 'nuka-carousel';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import Coins from '@/public/assets/kot-da-pes-coins.png';
-import { useMediaQuery } from 'usehooks-ts';
-import { BREAKPOINTS } from '@/constants/constants';
+import { useScreen } from '@/hooks/useScreen';
 import './advertisement-carousel.css';
 
 const defaultControlsConfig: React.ComponentProps<typeof Carousel>['defaultControlsConfig'] = {
@@ -38,17 +38,18 @@ const ScrollButton = ({ direction, nextSlideHandler }: TScrollButtonProps) => {
 };
 
 const AdvertisementCarousel = () => {
-    const is_small_screen = useMediaQuery(`(max-width: ${BREAKPOINTS.SMALL}px)`);
-    const is_medium_screen = useMediaQuery(`(max-width: ${BREAKPOINTS.MEDIUM}px)`);
+    const { is_xsmall_screen, is_small_screen, is_medium_screen, is_large_screen } = useScreen();
 
     const getNumberOfSlides = useCallback(() => {
+        if (is_xsmall_screen) return 2;
         if (is_small_screen) return 3;
         if (is_medium_screen) return 4;
+        if (is_large_screen) return 5;
         return 6;
-    }, [is_medium_screen, is_small_screen]);
+    }, [is_large_screen, is_medium_screen, is_small_screen, is_xsmall_screen]);
 
     return (
-        <section className='mx-auto max-w-screen-lg bg-background px-2 py-6 sm:px-10'>
+        <section className='flex-center max-w-screen-xl mx-auto min-h-[245px] bg-background px-2 py-6 sm:px-10'>
             <Carousel
                 autoplay
                 autoplayInterval={10000}

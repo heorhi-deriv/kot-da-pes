@@ -28,11 +28,11 @@ const MainNav = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => 
 
     return (
         <>
-            <nav className={cn('relative flex items-center justify-between bg-white shadow-md', className)} {...props}>
+            <nav className={cn('relative flex items-center justify-between bg-white shadow-lg', className)} {...props}>
                 <div>
                     <Image src={Logo} alt='logo' width={62} height={56} />
                 </div>
-                <div className='flex-center gap-4 min-[0px]:max-md:hidden '>
+                <div className='flex-center gap-4 min-[0px]:max-lg:hidden '>
                     {routes.map(route => {
                         return (
                             <Link
@@ -53,10 +53,10 @@ const MainNav = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => 
                     />
                     <Menu
                         onClick={() => setIsSideNavOpen(true)}
-                        className='transform stroke-primary duration-300 hover:scale-125 hover:cursor-pointer md:hidden'
+                        className='transform stroke-primary duration-300 hover:scale-125 hover:cursor-pointer lg:hidden'
                         size={48}
                     />
-                    <Button className='min-[0px]:max-md:hidden'>Войти</Button>
+                    <Button className='min-[0px]:max-lg:hidden'>Войти</Button>
                 </div>
             </nav>
 
