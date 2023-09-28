@@ -6,7 +6,7 @@ const BannerSection = () => {
         <section className='bg-foreground'>
             <div
                 className='
-        flex-center max-w-screen-xl mx-auto flex-col gap-y-5 p-3  
+        flex-center mx-auto max-w-screen-xl flex-col gap-y-5 p-3  
         sm:flex-row
         sm:gap-x-8 sm:py-4 
         lg:justify-evenly lg:px-6

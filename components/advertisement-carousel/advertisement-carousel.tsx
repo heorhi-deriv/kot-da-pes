@@ -1,11 +1,11 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useScreen } from '@/hooks/useScreen';
+import Coins from '@/public/assets/kot-da-pes-coins.png';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Carousel from 'nuka-carousel';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
-import Coins from '@/public/assets/kot-da-pes-coins.png';
-import { useScreen } from '@/hooks/useScreen';
+import { useCallback } from 'react';
 import './advertisement-carousel.css';
 
 const defaultControlsConfig: React.ComponentProps<typeof Carousel>['defaultControlsConfig'] = {
@@ -49,7 +49,7 @@ const AdvertisementCarousel = () => {
     }, [is_large_screen, is_medium_screen, is_small_screen, is_xsmall_screen]);
 
     return (
-        <section className='flex-center max-w-screen-xl mx-auto min-h-[245px] bg-background px-2 py-6 sm:px-10'>
+        <section className='flex-center mx-auto min-h-[245px] max-w-screen-xl bg-background px-2 py-6 sm:px-10'>
             <Carousel
                 autoplay
                 autoplayInterval={10000}

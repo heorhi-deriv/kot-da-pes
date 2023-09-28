@@ -1,14 +1,14 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import Logo from '@/public/assets/logo.svg';
+import { Menu, ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Logo from '@/public/assets/logo.svg';
-import OrderCallDialog from '../order-call-dialog/order-call-dialog';
+import { useRef, useState } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
-import { Button } from '@/components/ui/button';
-import { Menu, ShoppingCart } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import OrderCallDialog from '../order-call-dialog/order-call-dialog';
 
 const routes = [
     { name: 'Готовый корм', path: '' },
