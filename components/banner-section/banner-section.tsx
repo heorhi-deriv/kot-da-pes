@@ -17,7 +17,7 @@ const BannerSection = () => {
                 </div>
                 <div
                     className='
-        flex flex-col text-center font-amatic text-2xl font-semibold text-primary 
+        flex flex-col whitespace-nowrap text-center font-amatic text-2xl font-semibold text-primary
         sm:text-left sm:text-3xl sm:max-lg:basis-1/2 
         lg:text-5xl
         '
