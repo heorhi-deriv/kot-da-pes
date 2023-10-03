@@ -17,6 +17,10 @@ module.exports = {
             fontFamily: {
                 amatic: ['Amatic SC', 'sans-serif'],
             },
+            fontSize: {
+                'clamp-heading': "clamp(16px, 5vw, 48px)",
+                'clamp-paragraph': "clamp(14px, 5vw, 20px)",
+            },
             colors: {
                 border: 'hsl(var(--border))',
                 input: 'hsl(var(--input))',

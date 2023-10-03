@@ -17,13 +17,12 @@ const BannerSection = () => {
                 </div>
                 <div
                     className='
-        flex flex-col whitespace-nowrap text-center font-amatic text-2xl font-semibold text-primary
-        sm:text-left sm:text-3xl sm:max-lg:basis-1/2 
-        lg:text-5xl
+        flex flex-col whitespace-nowrap text-center font-amatic text-clamp-heading font-semibold text-primary
+        sm:text-left sm:max-lg:basis-1/2 
         '
                 >
                     <p>Ваши питомцы любят МЯСО</p>
-                    <ul className='my-2 list-inside list-disc pl-6 text-xl font-normal'>
+                    <ul className='my-2 list-inside list-disc pl-6 text-clamp-paragraph font-normal'>
                         <li>Натуральный состав</li>
                         <li>Удобная упаковка</li>
                     </ul>
