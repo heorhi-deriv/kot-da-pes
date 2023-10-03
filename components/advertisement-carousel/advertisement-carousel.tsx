@@ -2,7 +2,6 @@
 'use client';
 
 import Coins from '@/public/assets/kot-da-pes-coins.png';
-import { useScreen } from '@/hooks/useScreen';
 import useEmblaCarousel from 'embla-carousel-react';
 import Image from 'next/image';
 import React from 'react';
@@ -22,8 +21,6 @@ const carousel_array = [
 ];
 
 const AdvertisementCarousel = () => {
-    const { is_medium_screen } = useScreen();
-
     const [embla_ref, embla_api] = useEmblaCarousel({ skipSnaps: true, align: 'start' });
 
     const { prev_btn_disabled, next_btn_disabled, onPrevButtonClick, onNextButtonClick } =
@@ -31,7 +28,7 @@ const AdvertisementCarousel = () => {
 
     return (
         <section className='mx-auto flex max-w-screen-xl bg-background px-2 py-6 sm:px-10'>
-            {is_medium_screen && <PrevButton onClick={onPrevButtonClick} disabled={prev_btn_disabled} />}
+            <PrevButton onClick={onPrevButtonClick} disabled={prev_btn_disabled} />
             <div className='embla overflow-hidden' ref={embla_ref}>
                 <div className='embla__container flex'>
                     {carousel_array.map((el, i) => {
@@ -43,7 +40,7 @@ const AdvertisementCarousel = () => {
                     })}
                 </div>
             </div>
-            {is_medium_screen && <NextButton onClick={onNextButtonClick} disabled={next_btn_disabled} />}
+            <NextButton onClick={onNextButtonClick} disabled={next_btn_disabled} />
         </section>
     );
 };

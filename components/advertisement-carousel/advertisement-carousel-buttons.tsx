@@ -50,7 +50,7 @@ export const PrevButton: React.FC<TButtonProps> = props => {
     const { disabled, ...restProps } = props;
 
     return (
-        <button type='button' {...restProps}>
+        <button type='button' {...restProps} className='max-md:hidden'>
             <ChevronLeft
                 className='transform stroke-primary duration-300 hover:scale-125 hover:cursor-pointer'
                 size={60}
@@ -65,7 +65,7 @@ export const NextButton: React.FC<TButtonProps> = props => {
     const { children, disabled, ...restProps } = props;
 
     return (
-        <button type='button' {...restProps}>
+        <button type='button' {...restProps} className='max-md:hidden'>
             <ChevronRight
                 className='transform stroke-primary duration-300 hover:scale-125 hover:cursor-pointer'
                 size={60}
