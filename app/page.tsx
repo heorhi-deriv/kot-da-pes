@@ -2,13 +2,12 @@ import AdvertisementCarousel from '@/components/advertisement-carousel/advertise
 import BannerSection from '@/components/banner-section/banner-section';
 import ProductSection from '@/components/product-section/product-section';
 
-export default async function Home() {
-    const asyncProductSection: JSX.Element = await ProductSection();
+export default function Home() {
     return (
         <main className='mx-auto'>
             <AdvertisementCarousel />
             <BannerSection />
-            {asyncProductSection}
+            <ProductSection />
         </main>
     );
 }
