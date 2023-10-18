@@ -1,17 +1,18 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import Logo from '@/public/assets/logo.svg';
+import { useRef, useState } from 'react';
 import { Menu, ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import Logo from '@/public/assets/logo.svg';
+import { useCart } from '../cart-provider/cart-provider';
 import OrderCallDialog from '../order-call-dialog/order-call-dialog';
 
 const routes = [
-    { name: 'Готовый корм', path: '' },
+    { name: 'Готовый корм', path: '/#gotovi_korm' },
     { name: 'Боксы', path: '' },
     { name: 'Говядина', path: '' },
     { name: 'Лакомства', path: '' },
@@ -20,6 +21,7 @@ const routes = [
 ];
 
 const MainNav = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
+    const { products } = useCart();
     const ref = useRef<HTMLDivElement>(null);
 
     const [is_side_nav_open, setIsSideNavOpen] = useState(false);
@@ -28,17 +30,20 @@ const MainNav = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => 
 
     return (
         <>
-            <nav className={cn('relative flex items-center justify-between bg-white shadow-lg', className)} {...props}>
+            <nav
+                className={cn('sticky top-0 z-[1] flex items-center justify-between bg-white shadow-lg', className)}
+                {...props}
+            >
                 <div>
-                    <Image src={Logo} alt='logo' width={62} height={56} />
+                    <Image alt='logo' height={56} src={Logo} width={62} />
                 </div>
                 <div className='flex-center gap-4 min-[0px]:max-lg:hidden '>
                     {routes.map(route => {
                         return (
                             <Link
-                                key={route.name}
-                                href={route.path}
                                 className='transform text-sm font-medium text-primary hover:scale-110'
+                                href={route.path}
+                                key={route.name}
                             >
                                 {route.name}
                             </Link>
@@ -51,9 +56,10 @@ const MainNav = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => 
                         className='transform stroke-primary duration-300 hover:scale-125 hover:cursor-pointer'
                         size={38}
                     />
+                    {products.length}
                     <Menu
-                        onClick={() => setIsSideNavOpen(true)}
                         className='transform stroke-primary duration-300 hover:scale-125 hover:cursor-pointer lg:hidden'
+                        onClick={() => setIsSideNavOpen(true)}
                         size={48}
                     />
                     <Button className='min-[0px]:max-lg:hidden'>Войти</Button>
@@ -72,9 +78,9 @@ const MainNav = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => 
                 {routes.map(route => {
                     return (
                         <Link
-                            key={route.name}
-                            href={route.path}
                             className='text-sm font-medium text-accent transition-colors'
+                            href={route.path}
+                            key={route.name}
                         >
                             {route.name}
                         </Link>

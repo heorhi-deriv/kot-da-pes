@@ -13,7 +13,7 @@ const BannerSection = () => {
         '
             >
                 <div className='px-4 sm:px-0 sm:max-lg:basis-3/5'>
-                    <Image src={CatDog} alt='cat_with_dog' width={500} height={250} />
+                    <Image alt='cat_with_dog' height={250} src={CatDog} width={500} />
                 </div>
                 <div
                     className='

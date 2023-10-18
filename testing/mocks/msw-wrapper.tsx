@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { initializeMocks } from './initialize';
-import { IS_DEVELOPMENT } from '@/config/constants';
 import { Loader } from '@/components/ui/loader';
+import { IS_DEVELOPMENT } from '@/config/constants';
+import { initializeMocks } from './initialize';
 
 const MSWWrapper = ({ children }: React.PropsWithChildren) => {
     const [is_msw_ready, setIsMSWReady] = useState(false);

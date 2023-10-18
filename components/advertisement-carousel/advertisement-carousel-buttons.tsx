@@ -1,12 +1,12 @@
+import React, { useCallback, useEffect, useState } from 'react';
 import { EmblaCarouselType } from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import React, { useCallback, useEffect, useState } from 'react';
 
 type TUsePrevNextButtonsType = {
-    prev_btn_disabled: boolean;
     next_btn_disabled: boolean;
-    onPrevButtonClick: () => void;
     onNextButtonClick: () => void;
+    onPrevButtonClick: () => void;
+    prev_btn_disabled: boolean;
 };
 
 export const usePrevNextButtons = (embla_api?: EmblaCarouselType): TUsePrevNextButtonsType => {
@@ -37,10 +37,10 @@ export const usePrevNextButtons = (embla_api?: EmblaCarouselType): TUsePrevNextB
     }, [embla_api, onSelect]);
 
     return {
-        prev_btn_disabled,
         next_btn_disabled,
-        onPrevButtonClick,
         onNextButtonClick,
+        onPrevButtonClick,
+        prev_btn_disabled,
     };
 };
 
@@ -53,8 +53,8 @@ export const PrevButton: React.FC<TButtonProps> = props => {
         <button type='button' {...restProps} className='max-md:hidden'>
             <ChevronLeft
                 className='transform stroke-primary duration-300 hover:scale-125 hover:cursor-pointer'
-                size={60}
                 opacity={disabled ? '0.5' : '1'}
+                size={60}
                 strokeWidth={2}
             />
         </button>
@@ -68,8 +68,8 @@ export const NextButton: React.FC<TButtonProps> = props => {
         <button type='button' {...restProps} className='max-md:hidden'>
             <ChevronRight
                 className='transform stroke-primary duration-300 hover:scale-125 hover:cursor-pointer'
-                size={60}
                 opacity={disabled ? '0.5' : '1'}
+                size={60}
                 strokeWidth={2}
             />
         </button>

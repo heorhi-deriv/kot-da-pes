@@ -2,8 +2,8 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 
 type LoaderProps = {
-    full_screen?: boolean;
     className?: string;
+    full_screen?: boolean;
 };
 
 export const Loader = ({ className, full_screen }: LoaderProps) => {

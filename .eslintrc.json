@@ -1,7 +1,56 @@
 {
-    "extends": "next/core-web-vitals",
+    "extends": ["next/core-web-vitals"],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "perfectionist",
+        "simple-import-sort",
+        "sort-keys-fix",
+        "sort-destructure-keys",
+        "typescript-sort-keys"
+    ],
     "rules": {
         "no-console": "error",
-        "no-debugger": "error"
+        "no-debugger": "error",
+        "perfectionist/sort-jsx-props": [
+            "error",
+            {
+                "type": "natural",
+                "order": "asc",
+                "groups": ["multiline", "unknown", "shorthand"]
+            }
+        ],
+        "simple-import-sort/exports": "error",
+        "simple-import-sort/imports": [
+            "error",
+            {
+                "groups": [
+                    [
+                        "public-path",
+                        // `react` first, then packages starting with a character
+                        "^react$",
+                        "^[a-z]",
+                        // Packages starting with `@`
+                        "^@",
+                        // Imports starting with `../`
+                        "^\\.\\.(?!/?$)",
+                        "^\\.\\./?$",
+                        // Imports starting with `./`
+                        "^\\./(?=.*/)(?!/?$)",
+                        "^\\.(?!/?$)",
+                        "^\\./?$",
+                        // Style imports
+                        "^.+\\.s?css$",
+                        // Side effect imports
+                        "^\\u0000",
+                        // Delete the empty line copied as the next line of the last import
+                        "\\s*"
+                    ]
+                ]
+            }
+        ],
+        "sort-destructure-keys/sort-destructure-keys": 2,
+        "sort-keys-fix/sort-keys-fix": "error",
+        "typescript-sort-keys/interface": "error",
+        "typescript-sort-keys/string-enum": "error"
     }
 }

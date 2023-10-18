@@ -23,7 +23,7 @@ export default async function Page({ params }: TPageProps) {
         <div>
             <h1 className='text-red-700'>{product.name}</h1>
             <h1 className='text-red-700'>{product.description}</h1>
-            <Image src={product.image.formats.thumbnail.url} alt='products' width={100} height={100} />
+            <Image alt='products' height={100} src={product.image.formats.thumbnail.url} width={100} />
         </div>
     );
 }

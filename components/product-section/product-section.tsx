@@ -9,6 +9,10 @@ const getCategoryName = (category_name: string) => {
     }
 };
 
+const id_mapper = {
+    ready_made_food: 'gotovi_korm',
+};
+
 const ProductSection = async () => {
     const response = await fetch('http://localhost:1337/api/products?populate=*', {
         next: {
@@ -33,21 +37,28 @@ const ProductSection = async () => {
     );
 
     return (
-        <div>
+        <section>
             {Object.keys(modified_products).map(category_name => {
                 return (
-                    <div key={category_name}>
-                        <div className='text-red-500'>{getCategoryName(category_name)}</div>
-                        <div>
+                    <div className='mx-auto max-w-screen-xl px-2' key={category_name}>
+                        <div
+                            className='my-6 text-center text-clamp-paragraph font-semibold md:my-8 md:text-start'
+                            //@ts-expect-error fix error
+                            id={id_mapper[category_name]}
+                        >
+                            {getCategoryName(category_name)}
+                        </div>
+                        <div className='grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-6 lg:grid-cols-4'>
                             {modified_products[category_name].map(
                                 //@ts-expect-error
                                 product => {
                                     return (
                                         <ProductCard
-                                            key={product.name}
-                                            image={product.image.data.attributes.formats.thumbnail.url}
-                                            name={product.name}
                                             description={product.description}
+                                            discount={product.discount}
+                                            image={product.image.data.attributes.formats.thumbnail.url}
+                                            key={product.name}
+                                            name={product.name}
                                             price={product.price}
                                         />
                                     );
@@ -57,7 +68,7 @@ const ProductSection = async () => {
                     </div>
                 );
             })}
-        </div>
+        </section>
     );
 };
 
